@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ===========================
+   Theme
+=========================== */
+
+@theme {
+  /* Colors */
+  --color-base-bg: #0e1420;
+  --color-base-surface: #161d2b;
+  --color-base-surface2: #1d2536;
+  --color-base-border: #2a3446;
+
+  --color-ink: #edf1f7;
+  --color-ink-muted: #8d97ac;
+  --color-ink-faint: #5c6478;
+
+  --color-amber: #e8a33d;
+  --color-amber-soft: #f0be72;
+  --color-amber-dim: #8c6524;
+
+  --color-violet: #6c7ef0;
+  --color-violet-soft: #96a2f4;
+
+  --color-signal-good: #4fcb8a;
+  --color-signal-bad: #e8654f;
+
+  /* Fonts */
+  --font-display: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Shadows */
+  --shadow-glow: 0 0 0 1px rgba(232, 163, 61, 0.15),
+    0 8px 40px -8px rgba(232, 163, 61, 0.25);
+
+  --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.45);
+
+  /* Animations */
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+}
+
+/* ===========================
+   Keyframes
+=========================== */
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   Base Styles
+=========================== */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3446 #0e1420;
+}
+
+html,
+body {
+  background: var(--color-base-bg);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Visible keyboard focus */
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Grid Background */
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
